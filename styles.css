@@ -6,3 +6,22 @@ body {
     background-color:blue!important;
     color:white!important;
 }
+ h1 {
+     padding: 15px;
+text-align: center;
+background-color: black;
+color:white
+    }
+
+   .searchBar {
+border: 1px solid black;
+   } 
+   
+   .addedRow {
+       width: 90%;
+       text-align: center;
+   }
+
+   #generatedList {
+       margin-top: 5%;
+   }
