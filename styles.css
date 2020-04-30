@@ -25,3 +25,8 @@ border: 1px solid black;
    #generatedList {
        margin-top: 5%;
    }
+
+   #forecastCard {
+display: inline-block;
+
+   }
