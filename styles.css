@@ -28,5 +28,15 @@ border: 1px solid black;
 
    #forecastCard {
 display: inline-block;
-
+margin-inline-start: 10px;
+   }
+   .card-text {
+       font-stretch: condensed;
+       font-weight: 50px;
+       border-bottom-color: black;
+       text-decoration: solid;
+   }
+   
+   .card-title {
+       border-bottom: black 5px;
    }

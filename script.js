@@ -25,12 +25,11 @@ $(document).ready(function () {
             method: "GET",
             url: "http://api.openweathermap.org/data/2.5/weather?q=" + inputStored + "&units=imperial&appid=d4e0d5067632cdd06a4bad12b5b1e650",
         }).then(function (data) {
-            // if (cities.indexOf(inputStored) === -1) {
-            // console.log("ok")
-            //     cities.push(inputStored);
-            //    localStorage.setItem("cities", cities);
+            if (cities.indexOf(inputStored) === -1) {
+                cities.push(inputStored);
+                localStorage.setItem("cities", cities);
 
-
+            }
 
             var card = $("<div>").addClass("card");
             var cardBody = $("<div>").addClass("card-body");
@@ -63,8 +62,10 @@ $(document).ready(function () {
                 if (actualTime === "12:00:00") {
                     var card = $("<div>").addClass("card col-md-2").attr("id", "forecastCard");
                     var cardTitle = $("<h5>").addClass("card-title").text(data.city.name);
-                    var tempFive = $("<p>").addClass("card-text").text("temp: " + data.list[i].main.temp);
-                    card.append(cardTitle, tempFive);
+                    var tempFive = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp);
+                    var humidity = $("<p>").addClass("card-text").text("Humidity:" + data.list[i].main.humidity + "%")
+                    var conditions = $("<p>").addClass("card-text").text("Skies : " + data.list[i].weather[0].main)
+                    card.append(cardTitle, tempFive, humidity, conditions);
                     $("#fiveDayForecast").append(card);
 
 
@@ -75,7 +76,10 @@ $(document).ready(function () {
         )
     }
 
-    var cities = localStorage.getItem("cities").split(",") || [];
+    var cities = [];
+    if (localStorage.getItem("cities")) {
+        cities = localstorage.getItem("cities").split(",");
+    }
 
 
     if (cities.length > 1) {
@@ -84,7 +88,8 @@ $(document).ready(function () {
 
     }
     for (var i = 0; i < cities.length; i++) {
-        addList(cities[i]);
+        var cityToAdd = cities[i].charAt(0).toUpperCase() + cities[i].substring(1);
+        addList(cityToAdd);
     }
 
 
